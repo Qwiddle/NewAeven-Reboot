@@ -3,8 +3,9 @@ import path from 'path';
 import http from 'http';
 import { Server } from 'colyseus';
 import { WebSocketTransport } from '@colyseus/ws-transport'
+import { databaseConnect } from './controllers/database/database';
 
-export function serverStart() {
+export async function serverStart() {
   const app = express();
   const server = http.createServer(app);
   const port = 8443;
@@ -17,7 +18,8 @@ export function serverStart() {
     })
   });
 
-  gameServer.listen(port);
+  await databaseConnect();
 
+  gameServer.listen(port);
   console.log(`Listening on port: ${port}`);
 }
