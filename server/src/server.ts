@@ -4,6 +4,7 @@ import http from 'http';
 import { Server } from 'colyseus';
 import { WebSocketTransport } from '@colyseus/ws-transport'
 import { databaseConnect } from './controllers/database/database';
+import { router } from './routes/router';
 
 export async function serverStart() {
   const app = express();
@@ -11,6 +12,9 @@ export async function serverStart() {
   const port = 8443;
 
   app.use(express.static(path.join(__dirname, '../../client')));
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true, limit: "10kb" }));
+  app.use("/account", router);
   
   const gameServer = new Server({
     transport: new WebSocketTransport({
@@ -19,7 +23,7 @@ export async function serverStart() {
   });
 
   await databaseConnect();
-
   gameServer.listen(port);
+
   console.log(`Listening on port: ${port}`);
 }
