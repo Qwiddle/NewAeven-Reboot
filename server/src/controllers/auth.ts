@@ -17,14 +17,14 @@ export async function login(req: Request, res: Response) {
     /* don't want to reveal too much in the error as this could be used to bruteforcing a check for valid accounts*/
     if(!acc)
       throw 'Failed.';
-    else if(acc.active_session_id)
+    else if(acc.activeSessionId)
       throw 'Failed.';
     else if(!await comparePassword(req.body.password, acc.password))
       throw 'Failed.';
     
     const seatReservation = await matchMaker.joinOrCreate("main_room", 0);
     const players = await getPlayers(acc.account);
-    
+
     await updateSession(acc, seatReservation.sessionId, false);
 
     sendResponse(res, { seatReservation, players: players.length, account: req.body.account }, false);
@@ -64,15 +64,15 @@ export async function register(req: Request, res: Response) {
 //documents returned from db may be null but checks will be ran beforehand. ugly workaround.
 async function updateSession(account: Document<unknown, any, IAccount> & IAccount | null, sessionId: string, active: boolean) {
   if(active) {
-    account!.active_session_id = sessionId;
-    account!.pending_session_id = '';
-    account!.pending_session_timestamp = null;
+    account!.activeSessionId = sessionId;
+    account!.pendingSessionId = '';
+    account!.pendingSessionTimestamp = null;
   } else {
-    account!.pending_session_timestamp = Date.now();
-    account!.pending_session_id = sessionId;
+    account!.pendingSessionTimestamp = Date.now();
+    account!.pendingSessionId = sessionId;
   }
 
-  account!.updated_at = Date.now();
+  account!.updated = Date.now();
   account!.save();
 }
 

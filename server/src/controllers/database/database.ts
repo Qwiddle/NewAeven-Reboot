@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
 import 'dotenv/config.js';
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 import { IAccount, Account } from './models/account';
 import { IPlayer, Player } from './models/player';
-import bcrypt from 'bcrypt';
 
 export async function databaseConnect(host?: string, database?: string) {
   try {

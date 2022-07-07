@@ -5,12 +5,12 @@ export interface IAccount {
   password: string,
   email: string,
   ip: string,
-  last_online?: number,
-  active_session_id?: string,
-  pending_session_id?: string,
-  pending_session_timestamp?: number | null,
+  lastOnline?: number,
+  activeSessionId?: string,
+  pendingSessionId?: string,
+  pendingSessionTimestamp?: number | null,
   created?: number,
-  updated_at?: number
+  updated?: number
 }
 
 const accountSchema = new Schema<IAccount>({
@@ -18,15 +18,15 @@ const accountSchema = new Schema<IAccount>({
   password: String,
   email: String,
   ip: String,
-  last_online: Number,
-  active_session_id: String,
-  pending_session_id: String,
-  pending_session_timestamp: Number,
+  lastOnline: Number,
+  activeSessionId: String,
+  pendingSessionId: String,
+  pendingSessionTimestamp: Number,
   created: {
     type: Number,
     default: Date.now
   },
-  updated_at: {
+  updated: {
     type: Number,
     default: Date.now
   }
