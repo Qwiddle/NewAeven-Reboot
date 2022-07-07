@@ -4,7 +4,7 @@ import http from 'http';
 import { Server } from 'colyseus';
 import { WebSocketTransport } from '@colyseus/ws-transport'
 import { databaseConnect } from './controllers/database/database';
-import { router } from './router';
+import { router } from './routes/router';
 
 export async function serverStart() {
   const app = express();
