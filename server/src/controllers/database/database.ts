@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import 'dotenv/config.js';
 import { IAccount, Account } from './models/account';
 import { IPlayer, Player } from './models/player';
+import bcrypt from 'bcrypt';
 
 export function databaseConnect(host?: string, database?: string) {
   return mongoose.connect(`mongodb://${process.env.DBHOST || host}/${process.env.DB || database}`);
@@ -49,4 +50,12 @@ export function createAccount(accountData: IAccount) {
   })
 
   return account.save();
+}
+
+export function comparePassword(password: string, hash: string) {
+  return bcrypt.compare(password, hash);
+}
+
+export function hashPassword(password: string) {
+  return bcrypt.hash(password, 10);
 }
