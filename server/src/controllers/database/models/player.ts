@@ -9,7 +9,7 @@ export interface IPlayer {
   map: GamePosition['map'];
   x: GamePosition['x'];
   y: GamePosition['y'];
-  level: Stats['level'];
+  level?: Stats['level'];
   hp?: Stats['hp'];
   maxHp?: Stats['maxHp'];
   sex: number;

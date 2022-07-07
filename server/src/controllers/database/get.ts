@@ -10,7 +10,7 @@ export function getAccountBySession(active_session_id: string) {
 }
 
 export function getPlayers(account: string) {
-  return Player.find({ account: account});
+  return Player.find({ account: account });
 }
 
 export function getPlayer(username: string) {

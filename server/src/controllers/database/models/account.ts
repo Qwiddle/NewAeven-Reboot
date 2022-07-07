@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-interface IAccount {
+export interface IAccount {
   account: string,
   password: string,
   email: string,
