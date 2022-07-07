@@ -4,8 +4,16 @@ import { IAccount, Account } from './models/account';
 import { IPlayer, Player } from './models/player';
 import bcrypt from 'bcrypt';
 
-export function databaseConnect(host?: string, database?: string) {
-  return mongoose.connect(`mongodb://${process.env.DBHOST || host}/${process.env.DB || database}`);
+export async function databaseConnect(host?: string, database?: string) {
+  try {
+    await mongoose.connect(`mongodb://${process.env.DBHOST || host}/${process.env.DB || database}`);
+  } catch(error) {
+    console.error(error);
+  }
+
+  mongoose.connection.on('error', error => {
+    console.error(error);
+  });
 }
 
 export function getAccount(account: string) {
