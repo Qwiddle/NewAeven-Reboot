@@ -5,6 +5,7 @@ import { Server } from 'colyseus';
 import { WebSocketTransport } from '@colyseus/ws-transport'
 import { databaseConnect } from './controllers/database/database';
 import { router } from './router';
+import { MainRoom } from './rooms/mainRoom';
 
 export async function serverStart() {
   const app = express();
@@ -22,8 +23,10 @@ export async function serverStart() {
     })
   });
 
-  await databaseConnect();
+  databaseConnect();
+
   gameServer.listen(port);
+  gameServer.define("main_room", MainRoom).filterBy(['map']);
 
   console.log(`Listening on port: ${port}`);
 }
