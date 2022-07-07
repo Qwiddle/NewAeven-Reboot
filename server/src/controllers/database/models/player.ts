@@ -1,25 +1,25 @@
 import { Schema, model, Types } from 'mongoose';
 import { Hair, Stats, InventoryItem, Equipment, GamePosition } from '../../../../../shared/types';
 
-interface IPlayer {
+export interface IPlayer {
   account: string;
   username: string;
-  admin: number;
+  admin?: number;
   dir: number;
   map: GamePosition['map'];
   x: GamePosition['x'];
   y: GamePosition['y'];
   level: Stats['level'];
-  hp: Stats['hp'];
-  maxHp: Stats['maxHp'];
+  hp?: Stats['hp'];
+  maxHp?: Stats['maxHp'];
   sex: number;
   race: number;
   hairColor: Hair['color'];
   hairStyle: Hair['style'];
-  armor: Equipment['armor'];
-  weapon: Equipment['weapon'];
-  boots: Equipment['boots'];
-  inventory: Types.DocumentArray<InventoryItem>;
+  armor?: Equipment['armor'];
+  weapon?: Equipment['weapon'];
+  boots?: Equipment['boots'];
+  inventory?: Types.DocumentArray<InventoryItem>;
 }
 
 const playerSchema = new Schema<IPlayer>({
