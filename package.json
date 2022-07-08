@@ -5,8 +5,10 @@
   "main": "./server/src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./server/src/index.ts",
-    "start": "ts-node ./server/src/index.ts"
+    "dev": "npm-run-all --parallel watch:client watch:server",
+    "start": "ts-node ./server/src/index.ts",
+    "watch:client": "webpack --watch",
+    "watch:server": "nodemon ./server/src/index.ts --ignore ./client/"
   },
   "author": "",
   "license": "ISC",
@@ -14,7 +16,6 @@
     "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
     "@types/mongoose": "^5.11.97",
-    "live-server": "^1.1.0",
     "phaser": "^3.55.2",
     "ts-loader": "^9.3.1",
     "typescript": "^4.7.4",
@@ -28,6 +29,7 @@
     "express": "^4.18.1",
     "mongoose": "^6.4.2",
     "nodemon": "^2.0.18",
+    "npm-run-all": "^4.1.5",
     "ts-node": "^10.8.1"
   }
 }
