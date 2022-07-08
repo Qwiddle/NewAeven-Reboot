@@ -12,7 +12,7 @@ export async function serverStart() {
   const server = http.createServer(app);
   const port = 8443;
 
-  app.use(express.static(path.join(__dirname, '../../client')));
+  app.use(express.static(path.join(__dirname, '../../client/')));
   app.use(express.json());
   app.use(express.urlencoded({ extended: true, limit: "10kb" }));
   app.use("/account", router);
