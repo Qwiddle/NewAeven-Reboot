@@ -25,12 +25,8 @@ export default class BootScene extends Phaser.Scene {
       blendMode: 'ADD',
     })
 
-    const logo = this.physics.add.image(400, 100, 'logo')
+    const logo = this.add.image(400, 100, 'logo')
 
-    logo.setVelocity(100, 200)
-    logo.setBounce(1, 1)
-    logo.setCollideWorldBounds(true)
-
-    emitter.startFollow(logo)
+    emitter.startFollow(logo);
   }
 }
