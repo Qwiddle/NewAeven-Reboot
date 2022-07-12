@@ -9,8 +9,8 @@ const initialState: GameState = {
   status: 'boot'
 };
 
-export const gameSlice = createSlice({
-  name: 'status',
+export const gameStatusSlice = createSlice({
+  name: 'gameStatus',
   initialState,
   reducers: {
     setStatus: (state: any, action: PayloadAction<string>) => {
@@ -21,5 +21,5 @@ export const gameSlice = createSlice({
 
 export const selectStatus = (state: RootState) => state.gameStatus.status;
 
-export const { setStatus } = gameSlice.actions;
-export default gameSlice.reducer;
+export const { setStatus } = gameStatusSlice.actions;
+export default gameStatusSlice.reducer;

@@ -1,10 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import statusReducer from '../features/game/gameSlice';
-import homeReducer from '../features/home/homeSlice';
+import gameStatusReducer from '../components/game/gameSlice';
+import homeReducer from '../components/home/homeSlice';
 
 export const store = configureStore({
   reducer: {
-    gameStatus: statusReducer,
+    gameStatus: gameStatusReducer,
     home: homeReducer
   },
 });

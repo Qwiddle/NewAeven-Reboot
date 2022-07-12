@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
-
 import Phaser from 'phaser'
 import BootScene from '../../scenes/boot';
+import { useEffect, useState } from 'react';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { selectStatus, setStatus } from './gameSlice';
+import { Outlet } from 'react-router-dom';
 
 const PhaserGame = () => {
   const dispatch = useAppDispatch();
@@ -41,14 +41,15 @@ const PhaserGame = () => {
   ]);
 
   return (
-    <div id="game-container">
+    <><div id="game-container">
       <button className='setStatus'
         aria-label="Set Status"
         onClick={() => dispatch(setStatus('home'))}>
-        
+
         Set Status
       </button>
-    </div>
+    </div><Outlet />
+    </>
   );
 };
 
