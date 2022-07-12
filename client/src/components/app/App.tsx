@@ -1,5 +1,5 @@
 import './App.css';
-import PhaserGame from './features/game/PhaserGame';
+import PhaserGame from '../game/PhaserGame';
 
 function App() {
   return (
