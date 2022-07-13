@@ -1,4 +1,5 @@
 import WebFont from 'webfontloader';
+import Phaser from 'phaser';
 
 /**
  * Phaser Webpack Loader plugin for Phaser.
@@ -117,7 +118,7 @@ export default class WebpackLoader extends Phaser.Plugins.ScenePlugin {
    */
   _loadImage(name, ext) {
     const dir = 'images/';
-    const file = require(`assets/${dir}${name}${this.postfix}.${ext}`);
+    const file = require(`../assets/${dir}${name}${this.postfix}.${ext}`);
     this.scene.load.image(name, file);
   }
 
@@ -128,8 +129,8 @@ export default class WebpackLoader extends Phaser.Plugins.ScenePlugin {
    */
   _loadSprite(name, ext) {
     const dir = 'sprites/';
-    const file = require(`assets/${dir}${name}${this.postfix}.${ext}`);
-    const data = require(`assets/${dir}${name}${this.postfix}.json`);
+    const file = require(`../assets/${dir}${name}${this.postfix}.${ext}`);
+    const data = require(`../assets/${dir}${name}${this.postfix}.json`);
     this.scene.load.atlas(name, file, data);
   }
 
@@ -140,7 +141,7 @@ export default class WebpackLoader extends Phaser.Plugins.ScenePlugin {
    */
   _loadAudio(name, ext) {
     const dir = 'audio/';
-    const file = require(`assets/${dir}${name}.${ext}`);
+    const file = require(`../assets/${dir}${name}.${ext}`);
     this.scene.load.audio(name, file);
   }
 
@@ -151,8 +152,8 @@ export default class WebpackLoader extends Phaser.Plugins.ScenePlugin {
    */
   _loadBitmapFont(name, ext) {
     const dir = 'fonts/';
-    const file = require(`assets/${dir}${name}${this.postfix}.${ext}`);
-    const data = require(`assets/${dir}${name}${this.postfix}.xml`);
+    const file = require(`../assets/${dir}${name}${this.postfix}.${ext}`);
+    const data = require(`../assets/${dir}${name}${this.postfix}.xml`);
     this.scene.load.bitmapFont(name, file, data);
   }
 }
