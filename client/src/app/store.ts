@@ -1,10 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import gameStatusReducer from '../components/game/gameSlice';
-import homeReducer from '../components/home/homeSlice';
+import gameReducer from '../slices/game';
+import homeReducer from '../slices/home';
 
 export const store = configureStore({
   reducer: {
-    gameStatus: gameStatusReducer,
+    game: gameReducer,
     home: homeReducer
   },
 });
