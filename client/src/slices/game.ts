@@ -8,7 +8,7 @@ export interface GameState {
 }
 
 const initialState: GameState = {
-  status: 'home',
+  status: 'boot',
   uiUpdates: []
 };
 

@@ -7,7 +7,7 @@ export default class HomeScene extends TypeshiftScene {
   }
 
   preload() {
-    this.sceneStore.dispatch(setStatus('home'));
+    
   }
 
   create() {

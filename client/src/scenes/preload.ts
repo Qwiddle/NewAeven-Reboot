@@ -25,7 +25,5 @@ export default class PreloadScene extends TypeshiftScene {
     this.loader.load().then(() => {
       this.sceneStore.dispatch(setStatus('home'));
     });
-
-    console.log('hi');
   }
 }
