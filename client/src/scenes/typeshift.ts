@@ -11,18 +11,22 @@ export default class TypeshiftScene extends Phaser.Scene {
     super(key);
   }
 
-  connectStore(updates: Record<UserEvent, (game: Phaser.Scene, state: any, action: any) => Promise<void | unknown>>): void {
+  connectStore(updates: Map<UserEvent, (game: Phaser.Scene, state: any, action: any) => Promise<void | unknown>>): void {
     this.sceneStore.subscribe(() => this.stateUpdated(updates));
   }
 
-  stateUpdated(updates: Record<UserEvent, (game: Phaser.Scene, state: any, action: any) => Promise<void | unknown>>): void {
+  stateUpdated(updates: Map<UserEvent, (game: Phaser.Scene, state: any, action: any) => Promise<void | unknown>>): void {
     const newState: GameState = this.sceneStore.getState().game;
     
     if(!newState.uiUpdates.length) 
       return;
 
     for(const action of newState.uiUpdates) {
-      updates[(action as any)['type'] as UserEvent](this, newState, action);
+      if(updates.has(action.type)) {
+        //ts doesn't know the state of Map so non-null assertion is used
+        updates.get(action.type)!(this, newState, action);
+      }
+
     }
   }
 }

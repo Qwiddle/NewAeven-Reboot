@@ -13,10 +13,10 @@ export default class GameScene extends TypeshiftScene {
   }
 
   create() {
-    const updates: Record<UserEvent, (game: Phaser.Scene, state: GameState, action: any) => Promise<void | unknown>> = {
-      account_login: this.takeAction,
-      account_register: this.takeAction
-    };
+    const updates: Map<UserEvent, (game: Phaser.Scene, state: GameState, action: any) => Promise<void | unknown>> = new Map([
+      ['account_login', this.takeAction],
+      ['account_register', this.takeAction]
+    ]);
   
     this.connectStore(updates);
   }
