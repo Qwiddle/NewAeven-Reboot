@@ -1,0 +1,10 @@
+#game-container {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  border: 1px solid red;
+}
+
+#game-container > canvas {
+  position: absolute;
+}
