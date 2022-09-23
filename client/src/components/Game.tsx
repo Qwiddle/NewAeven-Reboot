@@ -40,7 +40,9 @@ const Game = () => {
   }, []);
 
   return (
-    <><div id="game-container"></div><Outlet /></>
+    <div id="game-container">
+      <Outlet />
+    </div>
   );
 };
 
