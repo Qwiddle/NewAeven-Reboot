@@ -3,6 +3,9 @@ import BootScene from '../scenes/boot';
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import PreloadScene from '../scenes/preload';
+import './css/Game.css';
+
+//test commit
 
 const Game = () => {
   let phaser: Phaser.Game;

@@ -1,7 +1,9 @@
+import './css/Home.css';
+
 const Home = () => {
   return (
     //nothing yet
-    <div>Home</div>
+    <div id="home">Home</div>
   )
 }
 
